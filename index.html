@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>form validation</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="container">
+  <h1 class="text-success text-lg-center">Registration form</h1>
+<div class="col-lg-8 m-auto d-block">
+  <form action="#" onsubmit= "return validation()"class="bg-light">
+    
+    
+    <div class="form-group">
+      <label>Username :</label>
+      <input type="text" name ="user" class="form-control"  id="user">
+      <span id="username" class="text-danger font-weight-bold"></span>
+    </div>
+    
+    <div class="form-group">
+      <label>Email address</label>
+      <input type="text" class="form-control" id="email">
+      <span id="emails" class="text-danger font-weight-bold"></span> 
+    </div>
+
+    <div class="form-group">
+      <label >Password</label>
+      <input type="password" class="form-control" id="password">
+      <span id="passwords" class="text-danger font-weight-bold"></span>
+    </div>
+    <div class="form-group">
+      <label> Confirm Password</label>
+      <input type="password" class="form-control" id="confirmPassword">
+      <span id="cpass" class="text-danger font-weight-bold"></span>
+    </div>
+    <div class="form-group">
+      <label>Mobile no.</label>
+      <input type="text" class="form-control" id="number" >
+      <span id="numbers" class="text-danger font-weight-bold"></span>
+    
+    </div>
+    <input type="submit" class="btn btn-success" value="Submit">
+  </form>
+</div>
+</div>
+    <script type="text/javascript">
+
+      function validation(){
+        var user = document.getElementById('user').value;
+        var emails = document.getElementById('email').value;
+        var passwords = document.getElementById('password').value;
+        var cpass = document.getElementById('confirmPassword').value;
+        var numbers = document.getElementById('number').value;
+
+
+
+        if (user == ""){
+          document.getElementById("username").innerText = " ** Please fill the username";
+          return false;
+        }
+        
+        if (user.length <=2 || user.length>=20){
+          document.getElementById("username").innerText = "Please fill the username Between 3 to 20 characetor";
+          return false;
+        }
+
+        
+        if (!isNaN(user)){
+          document.getElementById("username").innerText = "Please fill the only alphabate charector";
+          return false;
+        }
+
+        if (emails == ""){
+          document.getElementById("emails").innerHTML = "Please fill the Email Id";
+          return false;
+        }
+        // if (emails.indexof('@') <= 0 ){
+        //   document.getElementById("emails").innerHTML = "Please Fill the Correct email";
+        //   return false;
+        // }
+        // if (emails.charAt(emails.length-4 ) != "." && emails.charAt(emails.length-3) != "."){
+        //   document.getElementById("emails").innerHTML = "this is invalid Position";
+        //   return false;
+        // }
+         
+        
+        if (passwords == ""){
+          document.getElementById("passwords").innerHTML = "Please fill the Password";
+          return false;
+          
+        }
+        
+        if (passwords.length <=6 || passwords.length >=10){
+          document.getElementById("passwords").innerText = "Please fill the passwords Between 6 to 10";
+          return false;
+        }
+        if (cpass!== passwords){
+          document.getElementById("cpass").innerHTML = "Passwords Dose Not Match";
+          return false;
+        }
+        if (numbers == ""){
+          document.getElementById("numbers").innerHTML = "Please fill the Mobile no.";
+          return false;
+        }
+        if (isNaN(numbers)){
+          document.getElementById("numbers").innerHTML = "Only Fill the Digit"
+          return false;
+        }
+        // if (numbers !== 10){
+        //   document.getElementById("numbers").innerHTML = "Please fill the Mobile no. at 10 digit";
+        //   return false;
+        // }
+      }
+    </script>
+
+
+ 
+</body>
+</html>
